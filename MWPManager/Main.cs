@@ -36,7 +36,6 @@ namespace MWPManager
                 rootNode.Tag = drive;
                 tvFolders.Nodes.Add(rootNode);
                 GetFolders(drive.RootDirectory.GetDirectories(), rootNode);
-                GetFiles(drive);
             }
         }
 
@@ -72,37 +71,15 @@ namespace MWPManager
         private void GetFiles(DirectoryInfo info)
         {
             lstFiles.Items.Clear();
-            ListViewItem.ListViewSubItem[] subItems;
             ListViewItem item = null;
 
-            foreach (FileInfo file in info.GetFiles())
+            foreach (FileInfo file in info.GetFilesByExtensions())
             {
                 item = new ListViewItem(file.Name, (int)Icons.ImageFile);
                 lstFiles.Items.Add(item);
             }
 
-            //lstFiles.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-        }
-
-        private void GetFiles(DriveInfo info)
-        {
-            lstFiles.Items.Clear();
-            ListViewItem.ListViewSubItem[] subItems;
-            ListViewItem item = null;
-
-            foreach (FileInfo file in info.RootDirectory.GetFiles())
-            {
-                item = new ListViewItem(file.Name, 1);
-                subItems = new ListViewItem.ListViewSubItem[]
-                    { new ListViewItem.ListViewSubItem(item, "File"),
-             new ListViewItem.ListViewSubItem(item,
-                file.LastAccessTime.ToShortDateString())};
-
-                item.SubItems.AddRange(subItems);
-                lstFiles.Items.Add(item);
-            }
-
-            lstFiles.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            lstFiles.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         private void tvFolders_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -118,7 +95,7 @@ namespace MWPManager
                 {
                     DriveInfo info = (DriveInfo)selectedNode.Tag;
                     GetFolders(info.RootDirectory.GetDirectories(), selectedNode);
-                    GetFiles(info);
+                    GetFiles(info.RootDirectory);
                 }
                 else if (selectedNode.Tag.GetType() == typeof(DirectoryInfo))
                 {
