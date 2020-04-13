@@ -76,6 +76,7 @@ namespace MWPManager
             foreach (FileInfo file in info.GetFilesByExtensions())
             {
                 item = new ListViewItem(file.Name, (int)Icons.ImageFile);
+                item.Tag = file.FullName;
                 lstFiles.Items.Add(item);
             }
 
@@ -105,6 +106,20 @@ namespace MWPManager
                 }
 
                 selectedNode.Expand();
+            }
+        }
+
+        /// <summary>
+        /// Cargamos la imagen seleccionada en el control de imagen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lstFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListView ctl = (ListView)sender;
+            if (ctl.SelectedItems.Count > 0)
+            {
+                picWP.ImageLocation = ctl.SelectedItems[0].Tag.ToString();
             }
         }
     }
