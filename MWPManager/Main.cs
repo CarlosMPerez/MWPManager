@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MWPManager
 {
@@ -119,7 +120,7 @@ namespace MWPManager
             ListView ctl = (ListView)sender;
             if (ctl.SelectedItems.Count > 0)
             {
-                picWP.ImageLocation = ctl.SelectedItems[0].Tag.ToString();
+                picWP.Image = Image.FromFile(ctl.SelectedItems[0].Tag.ToString());
             }
         }
     }

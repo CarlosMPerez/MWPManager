@@ -35,9 +35,8 @@
             this.imgIcons = new System.Windows.Forms.ImageList(this.components);
             this.picPhoneFrame = new System.Windows.Forms.PictureBox();
             this.tvFolders = new System.Windows.Forms.TreeView();
-            this.picWP = new System.Windows.Forms.PictureBox();
+            this.picWP = new Cyotek.Windows.Forms.ImageBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoneFrame)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWP)).BeginInit();
             this.SuspendLayout();
             // 
             // lstFiles
@@ -75,8 +74,8 @@
             this.picPhoneFrame.Image = ((System.Drawing.Image)(resources.GetObject("picPhoneFrame.Image")));
             this.picPhoneFrame.Location = new System.Drawing.Point(457, 12);
             this.picPhoneFrame.Name = "picPhoneFrame";
-            this.picPhoneFrame.Size = new System.Drawing.Size(241, 607);
-            this.picPhoneFrame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picPhoneFrame.Size = new System.Drawing.Size(338, 607);
+            this.picPhoneFrame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPhoneFrame.TabIndex = 1;
             this.picPhoneFrame.TabStop = false;
             // 
@@ -93,12 +92,10 @@
             // 
             // picWP
             // 
-            this.picWP.Location = new System.Drawing.Point(477, 74);
+            this.picWP.Location = new System.Drawing.Point(498, 73);
             this.picWP.Name = "picWP";
-            this.picWP.Size = new System.Drawing.Size(207, 446);
-            this.picWP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picWP.Size = new System.Drawing.Size(263, 445);
             this.picWP.TabIndex = 3;
-            this.picWP.TabStop = false;
             // 
             // Main
             // 
@@ -118,7 +115,6 @@
             this.Text = "Mobile Wallpaper Manager";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picPhoneFrame)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picWP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -130,7 +126,7 @@
         private System.Windows.Forms.TreeView tvFolders;
         private System.Windows.Forms.ImageList imgIcons;
         private System.Windows.Forms.ColumnHeader colHeader;
-        private System.Windows.Forms.PictureBox picWP;
+        private Cyotek.Windows.Forms.ImageBox picWP;
     }
 }
 
